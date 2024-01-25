@@ -21,9 +21,13 @@ defmodule NomeDoProjetoWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", NomeDoProjetoWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", NomeDoProjetoWeb do
+    pipe_through :api
+    get "/soma/:a/:b", CalculatorController, :add
+    get "/subtracao/:a/:b", CalculatorController, :subtract
+    get "/multiplicacao/:a/:b", CalculatorController, :multiply
+    get "/divisao/:a/:b", CalculatorController, :divide
+  end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:nome_do_projeto, :dev_routes) do
